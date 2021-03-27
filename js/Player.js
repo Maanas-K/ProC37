@@ -1,5 +1,10 @@
 class Player {
-  constructor(){}
+  constructor(){
+
+    this.index = null;
+    this.name = null;
+    this.distance = null ;
+  }
 
   getCount(){
     var playerCountRef = database.ref('playerCount');
@@ -14,10 +19,20 @@ class Player {
     });
   }
 
-  update(name){
-    var playerIndex = "player" + playerCount;
+  update(){
+    var playerIndex = "player" + this.index;
+    
     database.ref(playerIndex).set({
-      name:name
+      name:this.name,
+      distance:this.distance
     });
+  }
+  static getPlayerInfo(){
+    var playerInfoRef = database.ref('players');
+    playerInfoRef.on("value",(data)=>{
+
+      allPlayers = data.val();
+
+    })
   }
 }

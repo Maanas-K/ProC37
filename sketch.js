@@ -6,6 +6,8 @@ var playerCount;
 var database;
 
 var form, player, game;
+var allPlayers;
+var displayPosition
 
 
 function setup(){
@@ -18,4 +20,11 @@ function setup(){
 
 
 function draw(){
+
+  if(playerCount == 4){
+    game.update(1);
+  }
+  if(gameState == 1){
+    game.play();
+  }
 }
